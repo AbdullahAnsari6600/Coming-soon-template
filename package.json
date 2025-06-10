@@ -1,0 +1,28 @@
+{
+  "name": "coming-soon",
+  "version": "1.0.0",
+  "description": "![mockup](https://github.com/nipanimaju/coming-soon/blob/master/mockup.jpg?raw=true \"mockup\")",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nipanimaju/coming-soon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nipanimaju/coming-soon/issues"
+  },
+  "homepage": "https://github.com/nipanimaju/coming-soon#readme",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.18.2",
+    "nodemailer": "^7.0.3"
+  }
+}

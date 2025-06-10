@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang=en>
+
+<head>
+    <meta charset=UTF-8 />
+    <meta name=description content="Free coming soon template">
+    <meta name=author content="Pawel Zuchowski">
+    <meta name=viewport content="width=device-width,initial-scale=1" />
+    <meta http-equiv=X-UA-Compatible content="ie=edge" />
+    <link rel="icon" type="image/png" href="img/bg-free.png">
+    <link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css
+        integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel=stylesheet>
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;700&display=swap" rel=stylesheet>
+    <link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Comming Soon !</title>
+    <link href="styles/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class=container>
+        <div class=row>
+            <div class="left-wrap col-12 col-md-5">
+                <div class=left>
+                    <p><span class=days></span><span class=small> days</span></p>
+                    <p><span class=hours></span><span class=small> hours</span></p>
+                    <p>&nbsp;&nbsp;<span class=minutes></span><span class=small> minutes</span></p>
+                    <p>&nbsp;&nbsp;<span class=seconds></span><span class=small> seconds</span></p>
+                </div>
+            </div>
+            <div class="col-12 col-md-7 right">
+                <div class=mainInfo>
+                    <h1>COMING SOON</h1>
+                    <p class=slogan>Our Website is Coming Soon! </p>
+                    <p class=slogan>We're working hard to give you something amazing. Stay tuned! </p>
+                    <form id="notifyForm" class="mt-4">
+  <div class="form-group">
+    <input type="email" class="form-control" id="emailInput" placeholder="Enter your email" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Notify Me</button>
+  <p id="formMessage" class="mt-2 text-success" style="display:none;">Thank you! We'll keep you updated.</p>
+</form>
+<div class="social-icons">
+                        <!-- <a href="#" class="icon" title="Facebook"><i class="fab fa-facebook-f"></i></a> -->
+                        <!-- <a href="#" class="icon" title="Twitter"><i class="fab fa-twitter"></i></a> -->
+                        <a href="https://www.instagram.com/flowltd.ksa/" class="icon" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <!-- <a href="#" class="icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a> -->
+                        <a href="https://wa.me/966577637508" class="icon" title="WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="scripts/bundle.js"></script>
+    <script>
+  document.getElementById('notifyForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const email = document.getElementById('emailInput').value;
+
+    try {
+      const response = await fetch("http://localhost:5000/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email })
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        document.getElementById("formMessage").style.display = "block";
+      } else {
+        alert(data.message || "Something went wrong");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error sending request");
+    }
+
+    this.reset();
+  });
+</script>
+</body>
+
+</html>
